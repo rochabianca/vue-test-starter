@@ -1,17 +1,24 @@
 <template>
   <div data-test="home-component" class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <span data-test="count-display">{{ count }}</span>
+    <button @click="increment" data-test="increment-button">+</button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
   name: "home",
-  components: {
-    HelloWorld
+  data() {
+    return {
+      count: 0
+    };
+  },
+  methods: {
+    increment() {
+      this.count++;
+    }
   }
 };
 </script>
