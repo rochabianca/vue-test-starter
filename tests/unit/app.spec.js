@@ -34,7 +34,12 @@ describe("Home Component", () => {
     decrementButton.trigger("click");
     expect(wrapper.vm.count).toBe(0);
   });
-  it("if the counter is at zero, the decrement button dont decrements", () => {});
+  it("if the counter is at zero, the decrement button dont decrements", () => {
+    expect(wrapper.vm.count).toBe(0);
+    const decrementButton = wrapper.find('[data-test="decrement-button"]');
+    decrementButton.trigger("click");
+    expect(wrapper.vm.count).toBe(0);
+  });
   it("if you try to decrement zero, you get a error message", () => {});
   it("if you increment after try to decrement zero, the error message desapears", () => {});
 });
