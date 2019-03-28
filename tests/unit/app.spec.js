@@ -24,8 +24,16 @@ describe("Home Component", () => {
     incrementButton.trigger("click");
     expect(wrapper.vm.count).toBe(1);
   });
-  it("renders a decrement button", () => {});
-  it("clicking on the decrement button decrements the counter display", () => {});
+  it("renders a decrement button", () => {
+    expect(wrapper.html()).toContain('data-test="decrement-button"');
+  });
+  it("clicking on the decrement button decrements the counter display", () => {
+    wrapper.vm.count = 1;
+    expect(wrapper.vm.count).toBe(1);
+    const decrementButton = wrapper.find('[data-test="decrement-button"]');
+    decrementButton.trigger("click");
+    expect(wrapper.vm.count).toBe(0);
+  });
   it("if the counter is at zero, the decrement button dont decrements", () => {});
   it("if you try to decrement zero, you get a error message", () => {});
   it("if you increment after try to decrement zero, the error message desapears", () => {});

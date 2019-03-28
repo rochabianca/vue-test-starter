@@ -2,6 +2,7 @@
   <div data-test="home-component" class="home">
     <span data-test="count-display">{{ count }}</span>
     <button @click="increment" data-test="increment-button">+</button>
+    <button @click="decrement" data-test="decrement-button">-</button>
   </div>
 </template>
 
@@ -18,6 +19,9 @@ export default {
   methods: {
     increment() {
       this.count++;
+    },
+    decrement() {
+      this.count--;
     }
   }
 };
