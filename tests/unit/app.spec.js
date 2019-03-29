@@ -40,6 +40,18 @@ describe("Home Component", () => {
     decrementButton.trigger("click");
     expect(wrapper.vm.count).toBe(0);
   });
-  it("if you try to decrement zero, you get a error message", () => {});
-  it("if you increment after try to decrement zero, the error message desapears", () => {});
+  it("if you try to decrement zero, you get a error message", () => {
+    const decrementButton = wrapper.find('[data-test="decrement-button"]');
+    decrementButton.trigger("click");
+    const feedbackMessage = wrapper.find('[data-test="feedback-message"]');
+    expect(feedbackMessage.text()).not.toBe("");
+  });
+  it("if you increment after try to decrement zero, the error message desapears", () => {
+    const decrementButton = wrapper.find('[data-test="decrement-button"]');
+    decrementButton.trigger("click");
+    const incrementButton = wrapper.find('[data-test="increment-button"]');
+    incrementButton.trigger("click");
+    const feedbackMessage = wrapper.find('[data-test="feedback-message"]');
+    expect(feedbackMessage.text()).toBe("");
+  });
 });
